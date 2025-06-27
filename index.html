@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imóveis Tokenizados - DApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🏠 Imóveis Tokenizados</h1>
+        <div class="wallet-info">
+            <button id="connectWallet" class="btn btn-primary">Conectar Carteira</button>
+            <div id="walletAddress" class="wallet-address"></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Seção de Tokenização (apenas para owner) -->
+        <section class="section" id="tokenizationSection">
+            <h2>📋 Tokenizar Imóvel</h2>
+            <div class="form-card">
+                <form id="tokenizeForm">
+                    <div class="form-group">
+                        <label for="proprietarioCarteira">Endereço da Carteira do Proprietário:</label>
+                        <input type="text" id="proprietarioCarteira" placeholder="0x..." required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantidadeTokens">Quantidade de Tokens:</label>
+                            <input type="number" id="quantidadeTokens" placeholder="1000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="valorTotalWei">Valor Total (Wei):</label>
+                            <input type="text" id="valorTotalWei" placeholder="1000000000000000000" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nomeImovel">Nome do Imóvel:</label>
+                        <input type="text" id="nomeImovel" placeholder="Casa na Praia" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="enderecoCompleto">Endereço Completo:</label>
+                        <input type="text" id="enderecoCompleto" placeholder="Rua das Flores, 123" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="urlImagem">URL da Imagem:</label>
+                        <input type="url" id="urlImagem" placeholder="https://exemplo.com/imagem.jpg">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inscricaoImobiliaria">Inscrição Imobiliária:</label>
+                            <input type="text" id="inscricaoImobiliaria" placeholder="123456789">
+                        </div>
+                        <div class="form-group">
+                            <label for="matricula">Matrícula:</label>
+                            <input type="text" id="matricula" placeholder="MAT-001">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="oficio">Ofício:</label>
+                        <input type="text" id="oficio" placeholder="1º Ofício de Registro">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Tokenizar Imóvel</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Seção de Consulta de Imóveis -->
+        <section class="section">
+            <h2>🔍 Consultar Imóvel</h2>
+            <div class="form-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tokenIdConsulta">ID do Token:</label>
+                        <input type="number" id="tokenIdConsulta" placeholder="1">
+                    </div>
+                    <button id="consultarImovel" class="btn btn-info">Consultar</button>
+                </div>
+                
+                <div id="imovelInfo" class="imovel-info"></div>
+            </div>
+        </section>
+
+        <!-- Seção de Compra de Tokens -->
+        <section class="section">
+            <h2>💰 Comprar Tokens</h2>
+            <div class="form-card">
+                <form id="compraForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tokenIdCompra">ID do Token:</label>
+                            <input type="number" id="tokenIdCompra" placeholder="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidadeCompra">Quantidade:</label>
+                            <input type="number" id="quantidadeCompra" placeholder="10" required>
+                        </div>
+                    </div>
+                    
+                    <div class="price-info">
+                        <p>Preço por token: <span id="precoPorToken">-</span> ETH</p>
+                        <p>Custo total: <span id="custoTotal">-</span> ETH</p>
+                    </div>
+                    
+                    <div class="form-row">
+                        <button type="button" id="calcularPreco" class="btn btn-secondary">Calcular Preço</button>
+                        <button type="submit" class="btn btn-primary">Comprar Tokens</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Status -->
+        <div id="status" class="status"></div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.1/ethers.umd.min.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
